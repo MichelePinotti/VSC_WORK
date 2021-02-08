@@ -1,0 +1,74 @@
+<html>
+    <head><title>CALCOLATRICE JAVASCRIPT</title></head>
+    
+    
+    <body>
+
+        <table border=10>
+            <tr><td colspan="4"><input type="text" id="lcd" value="" style="text-align: right;"></td></tr>
+            <tr>
+                <td><input type="button" value="7" onclick="stampa(7)" style="width: 30px;"></td>
+                <td><input type="button" value="8" onclick="stampa(8)"></td>
+                <td><input type="button" value="9" onclick="stampa(9)"></td>
+                <td><input type="button" value="+" onclick="somma()"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" onclick="stampa(4)"></td>
+                <td><input type="button" value="5" onclick="stampa(5)"></td>
+                <td><input type="button" value="6" onclick="stampa(6)"></td>
+                <td><input type="button" value="-" onclick="sottrazione()"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" onclick="stampa(1)"></td>
+                <td><input type="button" value="2" onclick="stampa(2)"></td>
+                <td><input type="button" value="3" onclick="stampa(3)"></td>
+                <td><input type="button" value="*" onclick="moltiplicazione()"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="button" value="0" onclick="stampa(0)"></td>
+                <td><input type="button" value="=" onclick="uguale()"></td>
+                <td><input type="button" value="/" onclick="divisione()"></td>
+            </tr>
+
+        </table>
+        <script>
+            var y;
+            var e1;
+            var e2;
+
+            function stampa(x){
+                document.getElementById('lcd').value +=x;
+                e1=x
+            }
+            
+            function somma(){
+                y=1;
+            }
+            
+            function sottrazione(){
+                y=2;
+            }
+            
+            function moltiplicazione(){
+                y=3;
+            }
+            
+            function divisione(){
+                y=4;
+            }
+            
+            function uguale(){
+                if(y==1){
+                    
+                }else if(y==2){
+
+                }else if(y==3){
+
+                }else if(y==4){
+
+                }
+            }
+        </script>
+    </body>
+</html>

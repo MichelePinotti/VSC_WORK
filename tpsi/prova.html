@@ -1,0 +1,20 @@
+<html>
+    <head><title>Prova JS</title></head>
+
+    <body>
+        <input type="text"  id="numuno"><br />
+        <input type="text"  id="numdue"><br />
+        <input type="button"  value="Visualizza Somma"  onclick="somma()"><br />
+
+        <script>
+            function somma(){
+                let a= document.getElementById('numuno').value;
+                let b= document.getElementById('numdue').value;
+
+                let  somma=parseInt(a)+parseInt(b);
+
+                console.log("Somma: "+somma);
+            }
+        </script>
+    </body>
+</html>
