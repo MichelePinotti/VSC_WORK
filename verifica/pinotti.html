@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html>
     <head><title>verifica HTML</title></head>
     <style>
@@ -59,4 +60,67 @@
             }
         </script>
     </body>
+=======
+<html>
+    <head><title>verifica HTML</title></head>
+    <style>
+        #lavagna{
+            width: 450px;
+            height: 300px;
+            border: solid 1px black;
+        }
+        #lavagna2{
+            border:  2px red;
+            font-style: arial;
+            font-size: 14pt;
+        }
+    </style>
+    
+    
+    <body>
+        <input type = "text1" id = "cas1" style="background-color: orange">
+        <input type = "text2" id = "cas2" style="background-color: yellow"><br />
+        <input type = "button" value = "Ribalta" onclick = "ribalta()">
+        <input type = "button" value = "MCD" onclick = "mcd()">
+        <input type = "button" value = "Divisori" onclick = "divisori()">
+        <div class="foglio" id = "lavagna"></div><br/>
+        <div style="background-color: red; height: 50px; width: 70px;"></div>
+
+
+        <script>
+            function ribalta(){
+                let str = "";
+                /*for(let i; i<str.lenght("text1"); i++)){
+
+                }*/
+            }
+            function mcd(){
+                let a= document.getElementById("text1").value;
+                a=parseInt(a);
+                let b= document.getElementById("text2").value;
+                b=parseInt(b);
+
+                let div1="";
+
+                for(let i=1; i<a; i++){
+                    if(a/i === '0'){
+                        di1=a/i;
+                    }
+                }
+            }
+            function divisori(){
+                let a= document.getElementById("text1").value;
+                a=parseInt(a);
+                let div=0;
+
+                for(let i=1; i<a; i++){
+                    if((aModi) == 0){
+                        div = a/i;
+                        document.getElementById("lavagna").innerHTML +=+ "ciao"+div;
+                    }
+                }
+            }
+        </script>
+    </body>
+>>>>>>> 3bb886a2fa30b0b290ecdbe03fb4a04612cf4b9b
 </html>

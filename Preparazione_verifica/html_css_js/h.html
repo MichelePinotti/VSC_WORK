@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--
     Pagina html con:
     Form (2x caselle di testo [carattere "Arial", sfondo verde, testo bianco], 1x bottone)
@@ -50,4 +51,58 @@
             }
         </script>
     </body>
+=======
+<!--
+    Pagina html con:
+    Form (2x caselle di testo [carattere "Arial", sfondo verde, testo bianco], 1x bottone)
+    Se le due caselle di testo hanno la stessa stringa = Visualizza un messaggio altrimenti scambia il contenuto.
+-->
+
+<html>
+    <head>
+        <style>
+            .testo{
+                color: white; 
+                font-family: Arial;
+                background-color: green;
+            }
+            #box{  
+                width: 100px;
+                height: 100px;
+                border: solid 1px rgb(255, 0, 0);
+            }
+        </style>
+        <title>Es Form</title>
+    </head>
+    <body>
+
+        <!--blocco caselle di testo-->
+        <div>
+            <input class="testo" type="text" value="" id="testo1"> <br/>
+            <input class="testo" type="text" value="" id="testo2"> <br/>
+        </div>
+
+        <input type="button" value="controlla" id="bottone" onclick="controllo()"><br/>
+
+        <div id="box" width="350px" height="400px"></div>
+        
+        <script>
+            let bubb="";
+
+            function controllo(){
+                if(document.getElementById("testo1").value === document.getElementById("testo2").value){
+                    alert("UGUALI!"); 
+                    console.log("UGUALI! ma in console");
+                    document.getElementById("box").innerHTML = "UGUALI";
+                }else{
+                    bubb = document.getElementById("testo1").value;  //testo1 -> bubb
+                    document.getElementById("testo1").value = document.getElementById("testo2").value;              //testo2 -> testo1
+                    document.getElementById("testo2").value = bubb;  //bubb -> testo2
+                    document.getElementById("box").innerHTML = "Eseguo scambio";
+                }
+
+            }
+        </script>
+    </body>
+>>>>>>> 3bb886a2fa30b0b290ecdbe03fb4a04612cf4b9b
 </html>

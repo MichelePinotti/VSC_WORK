@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html>
     <head><title>prova con innerHTML</title></head>
     <style>
@@ -59,4 +60,67 @@
             }
         </script>
     </body>
+=======
+<html>
+    <head><title>prova con innerHTML</title></head>
+    <style>
+        .bordo{
+            width: 450px;
+            height: 300px;
+            border: solid 1px black;
+        }
+    </style>
+    
+    
+    <body>
+        Num 1: <input type = "text" id = "num1"><br />
+        Num 2: <input type = "text" id = "num2"><br />
+        <input type = "button" value = "Somma" onclick = "somma()">
+        <input type = "button" value = "Cancella" onclick = "cancella()">
+        <input type = "button" value = "Differenza" onclick = "differenza()">
+        <input type = "button" value = "Fattoriale numero 1" onclick = "fattoriale()">
+        <br />
+        Lavagna:
+        <div class="bordo" id = "lavagna"></div>         <!--div definisce una porzione di testo --> 
+        
+        <script>
+            function somma(){
+                let a = document.getElementById("num1").value;
+                let b = document.getElementById("num2").value;
+                let somma = parseInt(a) + parseInt(b);
+                let str = "";
+                str = a+" + "+b+" = "+somma;
+                document.getElementById("lavagna").innerHTML = "<font color = 'blue'>"+str+"</font><br />"; 
+                /*innerHTML prende l'elemento "lavagna" e ne modifica il contenuto, 
+                aggiungendo ( += ) una stringa "str", in questo caso con un andata a capo*/
+            }
+
+            function cancella(){
+                document.getElementById("lavagna").innerHTML = "";
+            }
+
+            function differenza(){          // esegue la differenza tra num1 e num2, se la differenza è negativa la scrive con carattere rosso.
+                let a = document.getElementById("num1").value;
+                let b = document.getElementById("num2").value;
+                let diff = parseInt(a) - parseInt(b);
+                let str = a+" - "+b+" = "+diff;
+                if(diff < 0){
+                    document.getElementById("lavagna").innerHTML += "<font color = 'red'>"+str+"</font><br/>";
+                }else{
+                    document.getElementById("lavagna").innerHTML += "<font color = 'blue'>"+str+"</font><br/>";
+                }
+            }
+            function fattoriale(){         //ricorsiva, calcola e stampa il fattoriale di un numero, visualizzando i vari valori.
+                let a = document.getElementById("num1").value;
+                let fattoriale = 1;
+                for(let i = 1; i <= parseInt(a); i++){
+                    if(i>1)
+                        fattoriale = fattoriale *i ;
+                }
+                let str= +fattoriale;
+                document.getElementById("lavagna").innerHTML += +str;
+            }
+        </script>
+    </body>
+>>>>>>> 3bb886a2fa30b0b290ecdbe03fb4a04612cf4b9b
 </html>
