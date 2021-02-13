@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -66,7 +66,6 @@ Processo* pop(Processo* v, int* dim){       //funziona
         printf("troppi pochi processi a disposizione\n");
     }
     return v ;
-=======
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -134,5 +133,4 @@ Processo* pop(Processo* v, int* dim){       //funziona
         printf("troppi pochi processi a disposizione\n");
     }
     return v ;
->>>>>>> 3bb886a2fa30b0b290ecdbe03fb4a04612cf4b9b
 }
