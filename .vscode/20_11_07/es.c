@@ -49,5 +49,4 @@ int doppie(int n, char* argv){
     }else{
         return 0;
     }
->>>>>>> 3bb886a2fa30b0b290ecdbe03fb4a04612cf4b9b
 }
