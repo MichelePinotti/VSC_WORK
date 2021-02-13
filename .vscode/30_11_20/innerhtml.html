@@ -1,44 +1,4 @@
-<<<<<<< HEAD
-<html>
-    <head><title>prova con innerHTML</title></head>
-    <body>
-        Num 1: <input type="text" id="num1" value="0"><br />
-        Num 2: <input type="text" id="num2" value="0"><br />
-        <input type="button" value="Somma" onclick="somma()">
-        <input type="button" value="differenza" onclick="differenza()">
-        <input type="button" value="fattoriale num1" onclick="fattoriale()">
-        <input type="button" value="Cancella" onclick="cancella()"><br /><br />
-        Lavagna:
-        <div id="lavagna" style="width: 450px; height: 300px; border: solid 3px rgb(0,255,0);"></div>
-       
-        <script>
-            function somma(){
-                let a = document.getElementById("num1").value;
-                let b = document.getElementById("num2").value;
-                let r = 0;
-                r = parseInt(a) + parseInt(b);
-                let str="";
-                str = str+a+" + "+b+" = "+r;
-                document.getElementById("lavagna").innerHTML += str+"<br />";
-            }
-            function cancella(){
-                document.getElementById("lavagna").innerHTML = "";
-            }
-            function differenza(){
-                let a = document.getElementById("num1").value;
-                let b = document.getElementById("num2").value;
-                let differenza;
-                diff = parseInt(a) - parseInt(b);
-                let str="";
-                str = str+a+" - "+b+" = "+diff;
-                document.getElementById("lavagna").innerHTML += str+"<br />";
-            }
-            /*function fattoriale(){
-                let a = document.getElementById("num1").value;
-            }*/
-        </script>
-    </body>
-=======
+
 <html>
     <head><title>prova con innerHTML</title></head>
     <body>
