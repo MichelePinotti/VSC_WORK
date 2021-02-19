@@ -10,4 +10,7 @@ int main(){
     testa = pushTesta(testa,4);
     printf("testa: %d\n",testa);
     stampaLista(testa);
+    printf("\nprima del push");
+    pushCoda(&testa,88);
+    stampaLista(testa);
 }
