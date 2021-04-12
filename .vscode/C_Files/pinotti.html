@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Verifica TPSI</title>
+        <style type="text/css">
+            #val_1{
+                background-color: red;
+            }
+            #val_2{
+                background-color: red;
+            }
+            #val_3{
+                background-color: green;
+            }
+            #lavagna{
+                background-color: grey;
+                width: 360px;
+                height: 150px;
+                border: solid 2px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" ID="val_1" value="">
+        <input type="text" ID="val_2" value="">
+        <input type="text" ID="val_3" value=""><br/>
+        <input type="button" value="Studia Trapezio" onclick="f1()">
+        <input type="button" value="Primi" onclick="f2()">
+        <input type="button" value="Serie Perfetta" onclick="f3()">
+        <div id="lavagna"></div><br />
+        <script>
+            function f1(){
+                let b_min;
+                b_min = document.getElementById("val_1").value;
+                b_min = parseInt(b_min);
+                let b_mag;
+                b_mag = document.getElementById("val_2").value;
+                b_mag = parseInt(b_mag);
+                let h;
+                h = document.getElementById("val_3").value;
+                h = parseInt(h);
+                let result;
+                result = ((b_min+b_mag)*h) / 2;
+                document.getElementById("lavagna").innerHTML = "risultato =" + result;
+            }
+
+            function f2(){
+                let a = parseInt(document.getElementById("val_1").value);
+                let b = parseInt(document.getElementById("val_2").value);
+                let c = parseInt(document.getElementById("val_3").value);
+
+                let cnt = 0;
+
+                for(let i=2; i<a; i++){
+                    if(a%i == 0){
+                        cnt = cnt + 1;
+                    }
+                }
+                if(cnt == 0){
+                    document.getElementById("lavagna").innerHTML += "il valore A è primo" ;
+                }else{
+                    document.getElementById("lavagna").innerHTML += "il valore A non è primo";
+                }
+
+                cnt = 0;
+                for(let i=2; i<b; i++){
+                    if(b%i == 0){
+                        cnt = cnt + 1;
+                    }
+                }
+                if(cnt == 0){
+                    document.getElementById("lavagna").innerHTML += "il valore B è primo";
+                }else{
+                    document.getElementById("lavagna").innerHTML += "il valore B non è primo";
+                }
+
+                cnt = 0;
+                for(let i=2; i<c; i++){
+                    if(c%i == 0){
+                        cnt = cnt + 1;
+                    }
+                }
+                if(cnt == 0){
+                    document.getElementById("lavagna").innerHTML += "il valore C è primo";
+                }else{
+                    document.getElementById("lavagna").innerHTML += "il valore C non è primo";
+                }
+            }
+
+            function f3(){
+                let a = parseInt(document.getElementById("val_1").value);
+                let b = parseInt(document.getElementById("val_2").value);
+                let c = parseInt(document.getElementById("val_3").value);
+                let vett = [];
+                vett.unshift(c);
+                vett.unshift(b);
+                vett.unshift(a);
+                for(let i = 0; i<vett.length; i++){
+                    for(let j = i ; j<vett.length; j++){
+                        if(vett[i] > vett[j]){
+                            vett[i] = vett[j];
+                        }
+                    }
+                }
+
+                for(let i = 0; i<vett.length; i++){
+                    document.getElementById("lavagna").innerHTML += vett[i];
+                }
+            }
+            
+        </script>
+    </body>
+</html>

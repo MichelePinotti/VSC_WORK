@@ -1,0 +1,70 @@
+<html>
+    <title>MasterClass</title>
+    <head>
+        <style>
+            html{
+                background-color: black;
+            }
+            h1{
+                color: white;
+                font-style: oblique;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            table{
+                border-style: solid ;
+                border-color: white;
+                height: 200px;
+                width: 150px;
+            }
+            #header_table{
+                background-color:  green;
+                color: white;
+                border-style: solid;
+                border-color: white;
+            }
+            #data{
+                background-color:  white;
+            }
+        </style>
+    </head>
+    <body >
+        <h1>Gestisci i tuoi soldi come vuoi</h1>
+        <table style="width: 100%;">
+            <tr id="header_table">
+                <th>SALDO</th>
+                <th>SPESE MENSILI</th>
+                <th>SALDO AZIONI</th>
+            </tr>
+            <tr id="data">
+                <td id="saldo">100</td>
+                <td id="spese">2</td>
+                <td id="azioni">0</td>
+            </tr>
+        </table>
+        <input type="text" id="in_spese">
+        <input type="button" value="aggiungi spesa" onclick="saldo()"><br />
+        <p id="temp" style="color: black;">0</p>
+        <script>
+            function saldo(){
+                var tot = parseInt(document.getElementById("saldo"));
+                console.log(tot);
+                var x = spese();
+                console.log(x);       
+                tot = parseInt(Cells[0]) - x;
+                console.log(Cells);
+                document.getElementById("saldo").innerHTML = tot;
+            }
+
+            function spese(){
+                let x = parseInt(document.getElementById("in_spese").value);
+                let tot = parseInt(document.getElementById("temp").value);
+                document.getElementById("temp").innerHTML = x;
+                console.log(tot);
+                tot = tot + x;
+
+                document.getElementById("spese").innerHTML = tot;
+                return x;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CIAONE</title>
+        <style type="text/css">
+            #table{
+            border: solid 2px;
+            width: 200px;
+            height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" ID="val_1" value="num1"><br />
+        <input type="text" ID="val_2" value="num2"><br />
+        <input type="text" ID="val_3" value="stringa da invertire"><br />
+        <input type="button" value="cliccami;)" onclick="funz1()"><br />
+        <input type="button" value="inverse" onclick="funz2()"><br />
+        <input type="button" value="mcd" onclick="MCD()"><br />
+        <input type="button" value="divisori" onclick="divisori()"><br /><br />
+        <table ID="table"></table><br />
+        <script>
+            function funz1(){
+                let a;
+                a = document.getElementById("val_1").value;
+                a = parseInt(a);
+                let b;
+                b = document.getElementById("val_2").value;
+                b = parseInt(b);
+                let result;
+                result = a + b;
+                document.getElementById("table").innerHTML = "risultato =" + result;
+            }
+
+            function funz2(){
+                let a = document.getElementById("val_3").value;
+                let cnt = a.length;
+                let inverse = "";
+                for(let i= 0; i < cnt ; i++){
+                    inverse =a[i] + inverse;
+                }
+                document.getElementById("table").innerHTML = inverse;
+            }
+
+            function MCD(){
+                let a = parseInt(document.getElementById("val_1").value);
+                let b = parseInt(document.getElementById("val_2").value);
+                let i= 1;
+                let result;
+                if(a>b){
+                    while(i<=b){
+                        if(a%i == 0 && b%i == 0){
+                            result = i;
+                        }
+                        i++;
+                    }
+                }else{
+                    while(i<=a){
+                        if(a%i == 0 && b%i == 0){
+                            result = i;
+                        }
+                        i++;
+                    }
+                }
+                document.getElementById("table").innerHTML = result;
+            }
+            
+            function divisori(){
+                let a = parseInt(document.getElementById("val_1").value);
+                for(let i=1; i<=a; i++){
+                    if(a%i == 0){
+                        document.getElementById("table").innerHTML += i + " , ";
+                    }
+                }
+            }
+            
+        </script>
+    </body>
+</html>
