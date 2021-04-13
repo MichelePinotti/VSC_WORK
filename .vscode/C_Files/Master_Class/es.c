@@ -1,3 +1,4 @@
+  
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -83,10 +84,37 @@ void trend(Action* a, float* spese){
         
         float molti = (rand()%100)-20;
         bilancio = (molti - a->price) * a->number;
-        printf("     %f    ", molti);
         a = a->next;
     }
     printf(" %f", bilancio);
+}
+
+void inviaDenaro(float importo, float* saldo){
+    if(controlForBuy(importo, *saldo)){
+        char inutile[13];   //numero della carta a cui inviare denaro ma in realta cala solo i soldi
+        printf("\ninserisci il numero della carta a cui inviare i soldi (12 numeri): ");
+        scanf("%s", &inutile);
+        printf("%s", inutile);
+        if(strlen(inutile) == 12){
+            printf("\ntransazione eseguita");
+            *saldo = *saldo - importo;
+        }else{
+            printf("\ntransazione non eseguita... RIPROVA");
+        }
+    }else{
+        printf("\n soldi insufficenti sulla carta");
+    }
+}
+
+void invitaAmico(char* email){
+    char* token;
+    for(int i=0; email[i]!='\0';i++){
+        if(email[i] == '@'){
+            strcpy(token, email+i);
+            break;
+        }
+    }
+    //mettere strcpy per confrontare @gmail.com
 }
 
 int main(){
@@ -96,11 +124,15 @@ int main(){
     float saldo = 0;
     float speseMensili = 0;
     float speseAzioni = 0;
+    int flag = 0;
     do{
         printf("\nSALDO: %f", saldo);
         printf("\nTOTALE SPESE MENSILI: %f", speseMensili);
         printf("\nBILANCIO AZIONI:");
-        trend(actionCart, &speseAzioni);
+        if(flag == 0)   //se non hai ancora comprato azioni stampa 0
+            printf("0");
+        else 
+            trend(actionCart, &speseAzioni);
         printf("\n---------------------------------------------------"); 
         printf("\n1.ACQUISTA");   
         printf("\n2.CARICA CARTA");     
@@ -127,15 +159,17 @@ int main(){
         }else if(scelta == 2){
             ricarica(&saldo, 502);
         }else if(scelta == 3){
+            flag = 1;
             actionCart = azioni(actionCart, "tesla", 25.00, &saldo, &speseAzioni);
             actionCart = azioni(actionCart, "ktm", 20.00, &saldo, &speseAzioni);
             actionCart = azioni(actionCart, "ferrari", 35.00, &saldo, &speseAzioni);
         }else if(scelta == 4){
-            
+            inviaDenaro(25.00, &saldo);
         }else if(scelta == 5){
             
         }else if(scelta == 6){
-            
+            invitaAmico("miky03.pinotti@gmail.com");
+            invitaAmico("francesco.pradella@gmali.com");
         }else if(scelta == 7){
             
         }else if(scelta == 8){
