@@ -350,6 +350,10 @@ int main(){
                 scanf("%s", email);
                 fflush(stdin);
                 invitaAmico(email);
+<<<<<<< HEAD
+=======
+                invitaAmico(email);
+>>>>>>> b615f7bff8f46f10c0bbe60f92bf9ca7e1b011ae
             }else if(scelta == 7){
                 if(supermercato == 0){
                     supermercato = 1;
