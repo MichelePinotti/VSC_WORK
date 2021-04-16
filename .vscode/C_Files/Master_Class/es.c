@@ -1,4 +1,3 @@
-  
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,6 +19,64 @@ typedef struct action{
     int number;
     struct action* next;
 }Action;
+
+void caricaListinoAzioni(){
+    FILE* fpout;
+    fpout = fopen("litinoAzioni.bin", "wb");
+    char name[20] = "tesla";
+    float* prezzo;
+    *prezzo = 25.00;
+    fwrite(name, sizeof(name),1,fpout);
+    fwrite(prezzo, sizeof(prezzo),1,fpout);
+    strcpy(name, "");
+    strcpy(name, "ferrari");
+    *prezzo = 30.00;
+    fwrite(name, sizeof(name),1,fpout);
+    fwrite(prezzo, sizeof(prezzo),1,fpout);
+    strcpy(name, "");
+    strcpy(name, "bugatti");
+    *prezzo = 20.00;
+    fwrite(name, sizeof(name),1,fpout);
+    fwrite(prezzo, sizeof(prezzo),1,fpout);
+    strcpy(name, "");
+    strcpy(name, "nasa");
+    *prezzo = 35.00;
+    fwrite(name, sizeof(name),1,fpout);
+    fwrite(prezzo, sizeof(prezzo),1,fpout);
+    strcpy(name, "");
+    strcpy(name, "mediaset");
+    *prezzo = 15.00;
+    fwrite(name, sizeof(name),1,fpout);
+    fwrite(prezzo, sizeof(prezzo),1,fpout);
+    fclose(fpout);
+}
+
+void scaricaListinoAzioni(){
+    FILE* fpin;
+    fpin = fopen("litinoAzioni.bin", "rb");
+    char name[20];
+    float* price;
+    fread(name, sizeof(name),1,fpin);
+    fread(price, sizeof(price),1,fpin);
+    printf("\n1. %s  %f", name, *price);
+    strcpy(name, "");
+    fread(name, sizeof(name),1,fpin);
+    fread(price, sizeof(price),1,fpin);
+    printf("\n1. %s  %f", name, *price);
+    strcpy(name, "");
+    fread(name, sizeof(name),1,fpin);
+    fread(price, sizeof(price),1,fpin);
+    printf("\n1. %s  %f", name, *price);
+    strcpy(name, "");
+    fread(name, sizeof(name),1,fpin);
+    fread(price, sizeof(price),1,fpin);
+    printf("\n1. %s  %f", name, *price);
+    strcpy(name, "");
+    fread(name, sizeof(name),1,fpin);
+    fread(price, sizeof(price),1,fpin);
+    printf("\n1. %s  %f", name, *price);
+    fclose(fpin);
+}
 
 float visualizzaSpeseMensili(Cart* c, int mese){
     float spese = 0;
@@ -83,12 +140,8 @@ void visualizzaAbbonamenti(Cart* c){
     }
 }
 
-Action* azioni(Action* a, char* name, float price, float* saldo, float* spese, int supermercato){
+Action* azioni(Action* a, char* name, float price,int numberOfAction, float* saldo, float* spese, int supermercato){
     if(supermercato == 0){  //se funzione supermercato è disattivata sarà possibile effettuare acquisti
-        int numberOfAction;
-        printf("\n quante azioni vuoi comprare di %s al prezzo di %f? ", name, price);
-        scanf("%d", &numberOfAction);
-        fflush(stdin);
         float buy = numberOfAction * price;
         if(numberOfAction){
             if(controlForBuy(buy, *saldo)){
@@ -185,15 +238,15 @@ void cercaAcquisto(Cart* c, char* name){
         printf("\nordine inesistente");
     }
 }
+
 int main(){
     int scelta; 
     Cart* cart = NULL;
     Action* actionCart = NULL;
     float saldo = 0;
     float speseMensili = 0;
-    float speseAzioni = 0;
-    int flag = 0;   //flag per azioni
-    int supermercato = 0;       //se 1 è attiva la funzione e blocca tutti gli acquisti 
+    int supermercato = 0;       //se 1 è attiva la funzione e blocca tutti gli acquisti
+    float speseAzioni = 0; 
     int giorno = 1;
     int mese = 1;
     int anno = 2021;
@@ -224,7 +277,7 @@ int main(){
         scanf("%d", &scelta);
         fflush(stdin);
         printf("---------------------------------------------------");
-        if(scelta<1 || scelta>11){
+        if(scelta<0 || scelta>11){
             printf("\nfunzionalita' non disponibile... riprova!");
         }else{
             if(scelta == 1){
@@ -251,19 +304,48 @@ int main(){
             // cart = acquista(cart, "amazon", 7.99, 25, 4, 2021, 1, &speseMensili, &saldo, supermercato);     //acquisto di tipo abbonamento
 
             }else if(scelta == 2){
-                ricarica(&saldo, 300);
+                float importo;
+                printf("\ninserisci quanti soldi vuoi caricare sulla tua MasterClass:");
+                scanf("%f", &importo);
+                fflush(stdin);
+                ricarica(&saldo, importo);
+
+                //ricarica(&saldo, 300);
             }else if(scelta == 3){
-                flag = 1;
-                actionCart = azioni(actionCart, "tesla", 25.00, &saldo, &speseAzioni, supermercato);
-                actionCart = azioni(actionCart, "ktm", 20.00, &saldo, &speseAzioni, supermercato);
-                actionCart = azioni(actionCart, "ferrari", 35.00, &saldo, &speseAzioni, supermercato);
+                int numeroAzioni;
+                int nomeAzione;
+                caricaListinoAzioni();
+                scaricaListinoAzioni();
+                printf("\ninserisci quali azioni vuoi comprare: ");
+                scanf("%d", &nomeAzione);
+                printf("\ninserisci quante azioni vuoi comprare: ");
+                scanf("%d", &numeroAzioni);
+                if(nomeAzione == 1){
+                    actionCart = azioni(actionCart, "tesla", 25.00, numeroAzioni, &saldo, &speseAzioni, supermercato);
+                }else if(nomeAzione == 2){
+                    actionCart = azioni(actionCart, "ferrari", 30.00, numeroAzioni,  &saldo, &speseAzioni, supermercato);
+                }else if(nomeAzione == 3){  
+                    actionCart = azioni(actionCart, "bugatti", 20.00, numeroAzioni,  &saldo, &speseAzioni, supermercato);
+                }else if(nomeAzione == 4){
+                    actionCart = azioni(actionCart, "nasa", 35.00, numeroAzioni,  &saldo, &speseAzioni, supermercato);
+                }else if(nomeAzione == 5){
+                    actionCart = azioni(actionCart, "mediaset", 15.00, numeroAzioni,  &saldo, &speseAzioni, supermercato);
+                }
             }else if(scelta == 4){
-                inviaDenaro(25.00, &saldo);
+                float importo;
+                printf("\ninserisci quando denaro vuoi inviare: ");
+                scanf("%f",importo);
+                fflush(stdin);
+                inviaDenaro(importo, &saldo);
             }else if(scelta == 5){
                 visualizzaAbbonamenti(cart);
             }else if(scelta == 6){
-                invitaAmico("miky03.pinotti@gmail.com");
-                invitaAmico("francesco.pradella@gmali.com");
+                char email[30];
+                printf("\ninserisci l'email del tuo amico: ");
+                scanf("%s", email);
+                fflush(stdin);
+                invitaAmico(email);
+                invitaAmico(email);
             }else if(scelta == 7){
                 if(supermercato == 0){
                     supermercato = 1;
@@ -273,8 +355,11 @@ int main(){
                     printf("\nfunzione supermercato disattivata");
                 }
             }else if(scelta == 8){
-                donazioni(20.00, &saldo);
-                donazioni(5.00, &saldo);
+                float importo;
+                printf("\ninserisci l'importo dela tua donazione: ");
+                scanf("%f", importo);
+                donazioni(importo, &saldo);
+                donazioni(importo, &saldo);
             }else if(scelta == 9){
                 printf("\nACQUISTI");
                 visualizzaAcquisti(cart);
